@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# atlassian-test
-=======
 # Jira Project Assistant #
 
 This manual can help you install and deploy this app to your atlassian site.
@@ -62,4 +59,3 @@ FORGE_EMAIL="your-email@example.com"
 ```
 docker-compose up -d --build
 ```
->>>>>>> 1f00fad (Create a README file)
