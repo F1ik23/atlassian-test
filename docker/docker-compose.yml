@@ -1,0 +1,53 @@
+services:
+  forge-app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: jira-project-assistant
+    volumes:
+      - ../forge:/app
+      - node_modules:/app/node_modules
+      - static_node_modules:/app/static/node_modules
+    env_file:
+      - .env
+    environment:
+      ATLASSIAN_SITE: ${ATLASSIAN_SITE}
+      ATLASSIAN_PRODUCT: ${ATLASSIAN_PRODUCT:-jira}
+      FORGE_TOKEN: ${FORGE_TOKEN}
+      FORGE_EMAIL: ${FORGE_EMAIL}
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    networks:
+      - forge-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '0.5'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+
+  forge-builder:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: forge-builder
+    volumes:
+      - ../forge:/app
+      - static_build:/app/static/build
+    command: [ "sh", "-c", "cd static && npm run build" ]
+    networks:
+      - forge-network
+
+volumes:
+  node_modules:
+  static_node_modules:
+  static_build:
+
+
+networks:
+  forge-network:
+    driver: bridge
