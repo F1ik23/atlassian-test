@@ -1,0 +1,19 @@
+@use '_navigation.scss';
+@use '_table.scss';
+
+:root {
+  font-family: 'Inter', 'Roboto', 'Montserrat', 'Open Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 700;
+  font-size: medium;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: transparent;
+
+}
+
+

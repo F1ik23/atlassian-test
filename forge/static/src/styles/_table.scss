@@ -1,0 +1,9 @@
+.row {
+    position: relative;
+    &--unassigned {
+        background-color: rgba(211, 47, 47, 0.7);
+    }
+    &--priority-low {
+        background-color: rgba(237, 108, 2, 0.7);
+    }
+}
